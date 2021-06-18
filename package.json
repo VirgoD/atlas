@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@adobe/jwt-auth": "^1.0.1",
+    "@okta/okta-vue": "^1.0.7",
+    "html-loader": "^2.1.2"
+  }
+}
