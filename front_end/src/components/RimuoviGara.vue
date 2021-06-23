@@ -1,29 +1,25 @@
 <template>
   <div class="container w-75 bg-light mt-5 p-4">
     <h2 class="pt-3" style="text-align:center">All Gare</h2>
-    <div class="" style="text-align:left">
+    <div class="" style="text-align:right">
         <form id="gare-search" v-on:submit.prevent>
           <input type="text" placeholder="Ricerca gara" name="gareName" />
           <button type="submit" class="btn btn-primary btn-sm mt-3" @click="searchGara">Ricerca</button>
         </form>
-      <div v-if="showAdminBoard" class="navbar-nav ml-auto">
-        <router-link class="btn btn-outline-success btn-sm" to="/addGara">Inserisci Gara
-        </router-link>
-        <router-link class="btn btn-outline-success btn-sm" to="/modifyaGara">Modifica Gara
-        </router-link>
-        <router-link class="btn btn-outline-success btn-sm" to="/deleteGare">Elimina Gara
-        </router-link>
-      </div>
+      <form id="rimuoviGara" v-on:submit.prevent>
+        <input type="text" placeholder="Rimuovi gara" name="gareName" />
+        <button type="submit" class="btn btn-primary btn-sm mt-3" @click="cancellaGara">Ricerca</button>
+      </form>
+
+    </div>
     <hr/>
 
-      <div cass="container px-5">
-        <div class=" row ">
-          <div
-              v-for="gara in gare"
-              :key="gara.id">
-            {{gara.id}}         {{gara.anno}}          {{gara.banditore}}              {{gara.baseAsta}}        {{gara.data}}       {{gara.nome}}
-
-          </div>
+    <div class="container px-5">
+      <div class=" row ">
+        <div
+            v-for="gara in gare"
+            :key="gara.id">
+          {{gara.id}}    {{gara.anno}}    {{gara.banditore}}   {{gara.baseAsta}}   {{gara.data}}    {{gara.nome}}
         </div>
       </div>
     </div>
@@ -82,6 +78,17 @@ export default {
             console.log("GAREI", this.gare)
           });
     },
+    cancellaGara(){
+      const form = document.getElementById("rimuoviGara");
+      const formData = new FormData(form);
+      axios
+          .get("http://localhost:8080/api/v1/cancellaGara", {
+            params: {
+              id: formData.get('id')
+            }, headers: authHeader()
+          })
+
+    }
   }
 }
 </script>

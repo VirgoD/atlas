@@ -97,6 +97,11 @@ export const router = new Router({
       component: () => import('./components/ModifyGara.vue')
     },
     {
+      path: '/rimuoviAzienda',
+      name: 'rimuoviAzienda',
+      component: () => import('./components/RimuoviAzienda.vue')
+    },
+    {
       path: '/implicit/callback',
       component: Auth.handleCallback(),
     },

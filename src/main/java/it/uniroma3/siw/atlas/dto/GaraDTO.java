@@ -7,7 +7,15 @@ public class GaraDTO {
     Long data;
     String baseAsta;
     String banditore;
-    public GaraDTO(String id, Long anno, String nome, Long data, String baseAsta, String banditore) {
+
+    public GaraDTO(String id, Long anno, String nome,
+                   Long data, String baseAsta, String banditore) {
+        this.id = id;
+        this.anno = anno;
+        this.nome = nome;
+        this.data = data;
+        this.baseAsta = baseAsta;
+        this.banditore = banditore;
     }
 
     public String getId() {
