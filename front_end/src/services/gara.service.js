@@ -6,7 +6,7 @@ const API_URL = 'http://localhost:8080/api/v1/';
 
 class GaraService {
     getAllGare() {
-        return axios.get(API_URL + 'collezioni', {headers: authHeader() })}
+        return axios.get(API_URL + 'gare', {headers: authHeader() })}
 
     getAdminBoard() {
         return axios.get(API_URL + 'admin', { headers: authHeader() });

@@ -42,8 +42,8 @@ public class GaraService {
                 )).collect(Collectors.toList());
     }
 
-    public List<GaraDTO> addGara(String titolo, Long anno, String descrizione, String azienda) {
-        return this.garaRepository.addGara(titolo, anno, descrizione,azienda)
+    public List<GaraDTO> addGara(String id,Long anno, String banditore,String  baseAsta, Long data, String nome) {
+        return this.garaRepository.addGara(id, anno, banditore, baseAsta,data,nome)
                 .stream()
                 .map(entry -> new GaraDTO(
                         entry.getId(),
@@ -55,4 +55,29 @@ public class GaraService {
                 )).collect(Collectors.toList());
     }
 
+    public List<GaraDTO> modifyGara(String id,Long anno, String banditore,String  baseAsta, Long data, String nome) {
+        return this.garaRepository.modifyGara(id,anno,banditore,baseAsta,data,nome)
+                .stream()
+                .map(entry -> new GaraDTO(
+                        entry.getId(),
+                        entry.getAnno(),
+                        entry.getNome(),
+                        entry.getData(),
+                        entry.getBaseAsta(),
+                        entry.getBanditore()
+                )).collect(Collectors.toList());
+    }
+
+    public List<GaraDTO> cancellaGara(String id) {
+        return this.garaRepository.cancellaGara(id)
+                .stream()
+                .map(entry -> new GaraDTO(
+                        entry.getId(),
+                        entry.getAnno(),
+                        entry.getNome(),
+                        entry.getData(),
+                        entry.getBaseAsta(),
+                        entry.getBanditore()
+                )).collect(Collectors.toList());
+    }
 }

@@ -25,7 +25,7 @@ public class JwtUtils {
   public static String generateJwtToken(Authentication authentication) {
 	  
 	jwtSecret="siwProject";
-	jwtExpirationMs=86400000;
+	jwtExpirationMs=864000000;
 	
     UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 

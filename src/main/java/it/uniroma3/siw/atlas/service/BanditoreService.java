@@ -37,8 +37,28 @@ public class BanditoreService {
                 )).collect(Collectors.toList());
     }
 
-    public List<BanditoreDTO> addCollection(String titolo, Long anno, String descrizione, String curatoreId) {
-        return this.banditoreRepository.addCollection(titolo,anno,descrizione,curatoreId)
+    public List<BanditoreDTO> addBanditore(String id, String nome,String settore) {
+        return this.banditoreRepository.addBanditore(id, nome,settore)
+                .stream()
+                .map(entry -> new BanditoreDTO(
+                        entry.getId(),
+                        entry.getNome(),
+                        entry.getSettore()
+                )).collect(Collectors.toList());
+    }
+
+    public List<BanditoreDTO> modifyBanditore(String id, String nome,String settore) {
+        return this.banditoreRepository.modifyBanditore(id, nome,settore)
+                .stream()
+                .map(entry -> new BanditoreDTO(
+                        entry.getId(),
+                        entry.getNome(),
+                        entry.getSettore()
+                )).collect(Collectors.toList());
+    }
+
+    public List<BanditoreDTO> cancellaBanditore(String id) {
+        return this.banditoreRepository.cancellaBanditore(id)
                 .stream()
                 .map(entry -> new BanditoreDTO(
                         entry.getId(),

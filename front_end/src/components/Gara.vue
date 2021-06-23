@@ -2,30 +2,27 @@
   <div class="container w-75 bg-light mt-5 p-4">
     <h2 class="pt-3" style="text-align:center">All Gare</h2>
     <div class="" style="text-align:right">
-      <div v-if="showAdminBoard" class="navbar-nav ml-auto">
         <form id="gare-search" v-on:submit.prevent>
           <input type="text" placeholder="Ricerca gara" name="gareName" />
           <button type="submit" class="btn btn-primary btn-sm mt-3" @click="searchGara">Ricerca</button>
         </form>
-
-        <router-link class="btn btn-outline-success btn-sm" to="/addGare">Inserisci Garea
+      <div v-if="showAdminBoard" class="navbar-nav ml-auto">
+        <router-link class="btn btn-outline-success btn-sm" to="/addGara">Inserisci Gara
         </router-link>
-        <router-link class="btn btn-outline-success btn-sm" to="/modificaGare">Modifica Garea
+        <router-link class="btn btn-outline-success btn-sm" to="/modifyaGara">Modifica Gara
         </router-link>
-        <router-link class="btn btn-outline-success btn-sm" to="/deleteGare">Elimina Garea
+        <router-link class="btn btn-outline-success btn-sm" to="/deleteGare">Elimina Gara
         </router-link>
       </div>
     </div>
     <hr/>
 
-    <div class="">
+    <div class="container px-5">
       <div class=" row ">
         <div
             v-for="gara in gare"
-            :key="gara.id"
-        >
-          {{gara.id}}    {{gara.nome}}    {{gara.id}}   {{gara.luogoNascita}}   {{gara.dataNascita}}    {{gara.luogoMorte}}        {{gara.dataMorte}}        {{gara.natzionalita}}
-
+            :key="gara.id">
+          {{gara.id}}    {{gara.anno}}    {{gara.banditore}}   {{gara.baseAsta}}   {{gara.data}}    {{gara.nome}}
         </div>
       </div>
     </div>
@@ -83,22 +80,6 @@ export default {
             this.gare = response.data;
             console.log("GAREI", this.gare)
           });
-    },
-
-
-    deleteGara(id, event) {
-      console.log(id);
-      axios.delete("http://localhost:8080/api/v1/deleteGara/" + id).then((response) => {
-        console.log(response);
-      });
-      event.target.parentElement.parentElement.parentElement.className =
-          "animate__animated animate__bounceOutUp";
-      setTimeout(function() {
-        event.target.parentElement.parentElement.remove();
-      }, 1000);
-    },
-    updateGara(id) {
-      this.$router.push({ path: "/garaUpdate/" + id });
     },
   }
 }

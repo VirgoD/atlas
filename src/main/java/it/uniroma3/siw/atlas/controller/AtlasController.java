@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/v1")
-class MomoController {
+class AtlasController {
 
     /*LogIn*/
     @RequestMapping(value = "/addAdmin", method = RequestMethod.GET)

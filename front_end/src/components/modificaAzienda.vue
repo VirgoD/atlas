@@ -12,14 +12,14 @@
               <p>nome:</p>
               <input v-model="azienda.nome" placeholder="nome" name="nome">
               <p>piva:</p>
-              <input v-model="azienda.pIva" placeholder="piva" name="piva">
+              <input v-model="azienda.pIva" placeholder="pIva" name="pIva">
               <p>amministrazione:</p>
               <input v-model="azienda.amministrazione" placeholder="amministrazione" name="amministrazione">
               <p>CURATORE ID:</p>
               <input v-model="azienda.settore" placeholder="settore" name="settore">
               </div>
             <button
-                @click="createAzienda"
+                @click="modifyAzienda"
                 type="submit"
                 class="btn btn-primary btn-sm mt-3"
             >Create</button>
@@ -40,7 +40,6 @@ export default {
   data() {
     return {
       azienda: {
-        id:"",
         nome: "",
         piva: "",
         amministrazione: "",
@@ -50,15 +49,15 @@ export default {
   },
 
   methods: {
-    createAzienda() {
+    modifyAzienda() {
       const form = document.getElementById("insertAzienda");
       const formData = new FormData(form);
       axios
-          .get("http://localhost:8080/api/v1/addAzienda", {
+          .get("http://localhost:8080/api/v1/modifyAzienda", {
             params: {
-              id:formData.get('id'),
+              id: formData.get('id'),
               nome: formData.get('nome'),
-              pIva: formData.get('piva'),
+              pIva: formData.get('pIva'),
               amministrazione: formData.get('amministrazione'),
               settore: formData.get('settore')
             }, headers: authHeader()}) //TODO Append dei parametri da far passare

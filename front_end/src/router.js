@@ -49,37 +49,52 @@ export const router = new Router({
     {
       path: '/azienda',
       name: 'azienda',
-      component: () => import('./components/Gara.vue')
+      component: () => import('./components/Azienda.vue')
     },
     {
       path: '/addAzienda',
       name: 'addAzienda',
+      component: () => import('./components/AddAzienda.vue')
+    },
+    {
+      path: '/addGara',
+      name: 'addGara',
       component: () => import('./components/AddGara.vue')
     },
     {
       path: '/addBanditore',
       name: 'addBanditore',
-      component: () => import('./components/AddAzienda.vue')
-    },
-    {
-      path: '/addOpera',
-      name: 'addOpera',
       component: () => import('./components/AddBanditore.vue')
     },
     {
       path: '/banditore',
       name: 'banditore',
-      component: () => import('./components/Azienda.vue')
+      component: () => import('./components/Banditore.vue')
     },
     {
-      path: '/gare',
-      name: 'gare',
-      component: () => import('./components/Banditore.vue')
+      path: '/gara',
+      name: 'gara',
+      component: () => import('./components/Gara.vue')
     },
     {
       path: '/deleteAzienda',
       name: 'deleteAzienda',
       component: () => import('./components/DeleteAzienda.vue')
+    },
+    {
+      path: '/modificaAzienda',
+      name: 'modificaAzienda',
+      component: () => import('./components/modificaAzienda.vue')
+    },
+    {
+      path: '/modifyBanditore',
+      name: 'modifyBanditore',
+      component: () => import('./components/modifyBanditore.vue')
+    },
+    {
+      path: '/modifyGara',
+      name: 'modifyGara',
+      component: () => import('./components/ModifyGara.vue')
     },
     {
       path: '/implicit/callback',
@@ -89,7 +104,7 @@ export const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/login', '/register', '/home', '/azienda', '/banditore','/gare'];
+  const publicPages = ['/login', '/register', '/home', '/azienda', '/banditore','/gara'];
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem('user');
   Vue.prototype.$auth.authRedirectGuard();

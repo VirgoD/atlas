@@ -15,13 +15,13 @@
           <router-link to="/mod" class="nav-link">Partner Board</router-link>
         </li>-->
         <li class="nav-item">
-          <router-link v-if="currentUser" to="/artist" class="nav-link">Gare</router-link>
+          <router-link v-if="currentUser" to="/gara" class="nav-link">Gare</router-link>
         </li>
         <li class="nav-item">
-          <router-link v-if="currentUser" to="/collection" class="nav-link">Aziende</router-link>
+          <router-link v-if="currentUser" to="/azienda" class="nav-link">Aziende</router-link>
         </li>
         <li class="nav-item">
-          <router-link v-if="currentUser" to="/opere" class="nav-link">Banditori</router-link>
+          <router-link v-if="currentUser" to="/banditore" class="nav-link">Banditori</router-link>
         </li>
       </div>
 

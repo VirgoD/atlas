@@ -2,17 +2,16 @@
   <div class="container w-75 bg-light mt-5 p-4">
     <h2 class="pt-3" style="text-align:center">All Banditore</h2>
     <div style="text-align:right">
-      <div v-if="showAdminBoard" class="navbar-nav ml-auto">
         <form id="banditore-search" v-on:submit.prevent>
-          <input type="text" placeholder="Ricerca opera" name="operaName" />
-          <button type="submit" class="btn btn-primary btn-sm mt-3" @click="searchOpera">Ricerca</button>
+          <input type="text" placeholder="Ricerca banditore" name="banditoreName" />
+          <button type="submit" class="btn btn-primary btn-sm mt-3" @click="searchBanditore">Ricerca</button>
         </form>
-
-      <router-link class="btn btn-outline-success btn-sm" to="/addOpera">Inserisci Opera
+        <div v-if="showAdminBoard" class="navbar-nav ml-auto">
+      <router-link class="btn btn-outline-success btn-sm" to="/addBanditore">Inserisci Banditore
       </router-link>
-      <router-link class="btn btn-outline-success btn-sm" to="/modificaOpera">Modifica Opera
+      <router-link class="btn btn-outline-success btn-sm" to="/modifyBanditore">Modifica Banditore
       </router-link>
-      <router-link class="btn btn-outline-success btn-sm" to="/deleteOpera">Elimina Opera
+      <router-link class="btn btn-outline-success btn-sm" to="/deleteBanditore">Elimina Banditore
       </router-link>
     </div>
     <hr/>
@@ -21,8 +20,8 @@
       <div class=" row ">
         <div
             v-for="banditore in banditori"
-            :key="banditore.anno">
-          {{banditore.titolo}}    {{banditore.anno}}   {{banditore.descrizione}}   {{banditore.azienda}}
+            :key="banditore.id">
+          {{banditore.id}}    {{banditore.nome}}   {{banditore.settore}}
 
         </div>
       </div>
@@ -69,20 +68,20 @@ export default {
   },
 
   methods : {
-    searchOpera() {
+    searchBanditore() {
       const form = document.getElementById('banditore-search');
       const formData = new FormData(form);
       axios
           .get("http://localhost:8080/api/v1/banditoreSpeficifa", {
             params: {
-              titolo: formData.get('operaName')
+              titolo: formData.get('banditoreName')
             }, headers: authHeader()
           })
           .then((response) => {
             this.banditori = response.data;
           });
     },
-    deleteOpera(id, event) {
+    deleteBanditore(id, event) {
       console.log(id);
       axios.delete("http://localhost:8080/api/v1/delete" + id).then((response) => {
         console.log(response);
@@ -93,7 +92,7 @@ export default {
         event.target.parentElement.parentElement.remove();
       }, 1000);
     },
-    updateOpera(id) {
+    updateBanditore(id) {
       this.$router.push({ path: "/banditoreUpdate/" + id });
     },
   }

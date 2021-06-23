@@ -23,17 +23,23 @@ public class AziendaController {
 
     @GetMapping(path = "/addAzienda")
     public  List<AziendaDTO> addAzienda(@RequestParam String id,
-                                        @RequestParam String nome,
-                                        @RequestParam String luogoNascita,
-                                        @RequestParam Long dataNascita,
-                                        @RequestParam(required = false) String luogoMorte,
-                                        @RequestParam(required = false) Long dataMorte,
-                                        @RequestParam String nazionalita)
-    {return this.aziendaService.addAzienda(id,nome,luogoNascita, dataNascita, luogoMorte, dataMorte, nazionalita); }
+                                        @RequestParam(required = false) String amministrazione,
+                                        @RequestParam(required = false) String nome,
+                                        @RequestParam(required = false)String pIva,
+                                        @RequestParam(required = false)String settore)
+    {return this.aziendaService.addAzienda(id,amministrazione, nome,pIva, settore); }
 
-    @DeleteMapping(value = "/deleteArtist")
-    public List<AziendaDTO> deleteArtist(@RequestParam String id){
+    @GetMapping(value = "/deleteAzienda")
+    public List<AziendaDTO> deleteAzienda(@RequestParam String id){
         return this.aziendaService.deleteAzienda(id);
     }
 
+    @GetMapping(value = "/modifyAzienda")
+    public List<AziendaDTO> modifyAzienda(@RequestParam String id,
+                                          @RequestParam String amministrazione,
+                                          @RequestParam String nome,
+                                          @RequestParam String pIva,
+                                          @RequestParam String settore){
+        return this.aziendaService.modifyAzienda(id,amministrazione, nome, pIva, settore);
+    }
 }

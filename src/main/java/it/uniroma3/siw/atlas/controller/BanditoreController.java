@@ -23,9 +23,19 @@ public class BanditoreController {
             .getBanditoreSpecifica(titolo); }
 
     @GetMapping(path ="/addBanditore")
-    public  List<BanditoreDTO> addCollection(@RequestParam String titolo,
-                                                @RequestParam Long anno,
-                                                @RequestParam String descrizione,
-                                                @RequestParam String curatoreId)
-    {return this.banditoreService.addCollection(titolo,anno,descrizione,curatoreId); }
+    public  List<BanditoreDTO> addBanditore(@RequestParam String id,
+                                            @RequestParam String nome,
+                                            @RequestParam String settore)
+    {return this.banditoreService.addBanditore(id, nome, settore); }
+
+    @GetMapping(path ="/modifyBanditore")
+    public  List<BanditoreDTO> modifyBanditore(@RequestParam String id,
+                                            @RequestParam String nome,
+                                            @RequestParam String settore)
+    {return this.banditoreService.modifyBanditore(id, nome, settore); }
+
+    @GetMapping(path = "/cancellaBanditore")
+    public  List<BanditoreDTO> modifyBanditore(@RequestParam String id){
+        return this.banditoreService.cancellaBanditore(id);
+    }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="container w-75 bg-light mt-5 p-4">
-    <h3 class="pt-3 " style="text-align:center">Create New Gara</h3>
+    <h3 class="pt-3 " style="text-align:center">Modify Gara</h3>
     <hr />
     <div class="container">
       <div class="row justify-content-center">
@@ -9,19 +9,19 @@
             <div class="form-group">
               <p>ID:</p>
               <input v-model="gara.id" placeholder="id" name="id">
-              <p>Anno:</p>
-              <input v-model="gara.anno" placeholder="Anno" name="anno">
-              <p>Banditore ID:</p>
-              <input v-model="gara.banditore" placeholder="banditore" name="banditore">
-              <p>Base Asta:</p>
-              <input v-model="gara.baseAsta" placeholder="Base Asta" name="baseAsta">
-              <p>Data Bando:</p>
-              <input v-model="gara.data" placeholder="Data" name="data">
               <p>NOME:</p>
               <input v-model="gara.nome" placeholder="nome" name="nome">
+              <p>Data Bando:</p>
+              <input v-model="gara.dataBando" placeholder="Data Bando" name="dataBando">
+              <p>Anno:</p>
+              <input v-model="gara.anno" placeholder="Anno" name="anno">
+              <p>Base Asta:</p>
+              <input v-model="gara.baseAsta" placeholder="Base Asta" name="baseAsta">
+              <p>Banditore ID:</p>
+              <input v-model="gara.banditore" placeholder="banditore" name="banditore">
             </div>
             <button
-                @click="createGara"
+                @click="modifyGara"
                 type="submit"
                 class="btn btn-primary btn-sm mt-3"
             >Create</button>
@@ -42,29 +42,29 @@ export default {
   data() {
     return {
       gara: {
-        id: "",
+        nome: "",
+        dataBando: "",
         anno: "",
-        banditore:"",
         baseAsta: "",
-        data: "",
-        nome: ""
+        banditore:""
       },
     };
   },
 
   methods: {
-    createGara() {
+    modifyGara() {
       const form = document.getElementById("insertGara");
       const formData = new FormData(form);
       axios
-          .get("http://localhost:8080/api/v1/addGara", {
+          .get("http://localhost:8080/api/v1/modifyGara", {
             params: {
               id: formData.get('id'),
+              nome: formData.get('nome'),
+              dataBando: formData.get('dataBando'),
               anno: formData.get('anno'),
-              banditore: formData.get('baseAsta'),
               baseAsta: formData.get('baseAsta'),
-              data: formData.get('data'),
-              nome: formData.get('nome')
+              banditore: formData.get('baseAsta')
+
             }, headers: authHeader()}) //TODO Append dei parametri da far passare
           .then((response) => {
             console.log(response);

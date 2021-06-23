@@ -3,6 +3,7 @@ package it.uniroma3.siw.atlas.controller;
 import it.uniroma3.siw.atlas.dto.GaraDTO;
 import it.uniroma3.siw.atlas.service.GaraService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,9 +24,24 @@ public class GaraController {
     public List<GaraDTO> getSpecificaGara(@RequestParam String titolo){ return this.garaService.getGaraSpecifica(titolo); }
 
     @GetMapping(path ="/addGara")
-    public  List<GaraDTO> addGara(@RequestParam String titolo,
-                                    @RequestParam Long anno,
-                                    @RequestParam String descrizione,
-                                    @RequestParam String azienda)
-    {return this.garaService.addGara(titolo,anno,descrizione,azienda); }
+    public  List<GaraDTO> addGara(@RequestParam String id,
+                                  @RequestParam Long anno,
+                                  @RequestParam String banditore,
+                                  @RequestParam String baseAsta,
+                                  @RequestParam Long data,
+                                  @RequestParam String nome)
+    {return this.garaService.addGara(id,anno,banditore,baseAsta,data,nome); }
+
+    @GetMapping(path ="/modifyGara")
+    public  List<GaraDTO> modifyGara(@RequestParam String id,
+                                     @RequestParam Long anno,
+                                     @RequestParam String banditore,
+                                     @RequestParam String baseAsta,
+                                     @RequestParam Long data,
+                                     @RequestParam String nome)
+    {return this.garaService.modifyGara(id,anno,banditore,baseAsta,data,nome); }
+
+    @GetMapping(path ="/cancellaGara")
+    public List<GaraDTO> cancellaGara(@RequestParam String id){ return this.garaService.cancellaGara(id); }
+
 }
