@@ -11,7 +11,7 @@
         </router-link>
         <router-link class="btn btn-outline-success btn-sm" to="/modifyaGara">Modifica Gara
         </router-link>
-        <router-link class="btn btn-outline-success btn-sm" to="/deleteGare">Elimina Gara
+        <router-link class="btn btn-outline-success btn-sm" to="/rimuoviGare" style="color: red; border-color: red;">Elimina Gara
         </router-link>
       </div>
     <hr/>

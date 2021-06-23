@@ -11,7 +11,7 @@
       </router-link>
       <router-link class="btn btn-outline-success btn-sm" to="/modificaAzienda">Modifica Azienda
       </router-link>
-      <router-link class="btn btn-outline-success btn-sm" to="/rimuoviAzienda">Elimina Azienda
+      <router-link class="btn btn-outline-success btn-sm" to="/rimuoviAzienda" style="color: red; border-color: red;" >Elimina Azienda
       </router-link>
     </div>
     <hr/>

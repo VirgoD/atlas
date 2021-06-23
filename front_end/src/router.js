@@ -102,6 +102,16 @@ export const router = new Router({
       component: () => import('./components/RimuoviAzienda.vue')
     },
     {
+      path: '/rimuoviBando',
+      name: 'rimuoviBando',
+      component: () => import('./components/RimuoviBanditore.vue')
+    },
+    {
+      path: '/rimuoviGara',
+      name: 'rimuoviGara',
+      component: () => import('./components/RimuoviGara.vue')
+    },
+    {
       path: '/implicit/callback',
       component: Auth.handleCallback(),
     },

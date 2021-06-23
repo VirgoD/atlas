@@ -11,7 +11,7 @@
       </router-link>
       <router-link class="btn btn-outline-success btn-sm" to="/modifyBanditore">Modifica Banditore
       </router-link>
-      <router-link class="btn btn-outline-success btn-sm" to="/deleteBanditore">Elimina Banditore
+      <router-link class="btn btn-outline-success btn-sm" to="/rimuoviBanditore" style="color: red; border-color: red;">Elimina Banditore
       </router-link>
     </div>
     <hr/>
